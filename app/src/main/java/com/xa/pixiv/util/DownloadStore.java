@@ -17,12 +17,19 @@ public final class DownloadStore {
         Set<String> ids = new HashSet<>(prefs.getStringSet("ids", Collections.emptySet()));
         ids.add(String.valueOf(id));
         prefs.edit().putStringSet("ids", ids).putString("title_" + id, work.getTitle())
-                .putString("author_" + id, work.getAuthor()).apply();
+                .putString("author_" + id, work.getAuthor())
+                .putString("preview_" + id, work.getPreviewUrl())
+                .putLong("artwork_" + id, work.getId()).apply();
     }
     public void remove(long id) {
         Set<String> ids = new HashSet<>(prefs.getStringSet("ids", Collections.emptySet()));
         ids.remove(String.valueOf(id));
-        prefs.edit().putStringSet("ids", ids).remove("title_" + id).remove("author_" + id).apply();
+        prefs.edit().putStringSet("ids", ids)
+                .remove("title_" + id)
+                .remove("author_" + id)
+                .remove("preview_" + id)
+                .remove("artwork_" + id)
+                .apply();
     }
     public List<Long> ids() {
         List<Long> out = new ArrayList<>();
@@ -31,4 +38,6 @@ public final class DownloadStore {
     }
     public String title(long id) { return prefs.getString("title_" + id, "Pixiv 作品"); }
     public String author(long id) { return prefs.getString("author_" + id, "Pixiv Creator"); }
+    public String preview(long id) { return prefs.getString("preview_" + id, ""); }
+    public long artworkId(long id) { return prefs.getLong("artwork_" + id, 0L); }
 }

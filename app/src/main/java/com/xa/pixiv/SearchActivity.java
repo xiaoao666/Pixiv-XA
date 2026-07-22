@@ -3,6 +3,13 @@ package com.xa.pixiv;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.Editable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +37,7 @@ import com.xa.pixiv.data.PixivImages;
 import com.xa.pixiv.data.PixivRepository;
 import com.xa.pixiv.data.PixivUser;
 import com.xa.pixiv.data.SearchOptions;
+import com.xa.pixiv.data.TrendingTag;
 import com.xa.pixiv.ui.ArtAdapter;
 
 import java.text.SimpleDateFormat;
@@ -48,6 +56,8 @@ public final class SearchActivity extends AppCompatActivity implements ArtAdapte
     private static final String MODE_ID = "id";
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final ExecutorService suggestionExecutor = Executors.newSingleThreadExecutor();
+    private final Handler suggestionHandler = new Handler(Looper.getMainLooper());
     private final SearchOptions options = new SearchOptions();
     private PixivRepository repository;
     private ArtAdapter adapter;
@@ -57,6 +67,11 @@ public final class SearchActivity extends AppCompatActivity implements ArtAdapte
     private View filters;
     private View userScroll;
     private LinearLayout userResults;
+    private View suggestionCard;
+    private LinearLayout suggestionList;
+    private Runnable pendingSuggestion;
+    private int suggestionGeneration;
+    private boolean suppressSuggestions;
     private String mode = MODE_WORKS;
     private String query = "";
     private String nextUrl = "";
@@ -74,6 +89,8 @@ public final class SearchActivity extends AppCompatActivity implements ArtAdapte
         filters = findViewById(R.id.search_filters);
         userScroll = findViewById(R.id.search_user_scroll);
         userResults = findViewById(R.id.search_user_results);
+        suggestionCard = findViewById(R.id.search_suggestions_card);
+        suggestionList = findViewById(R.id.search_suggestions);
 
         RecyclerView list = findViewById(R.id.search_page_list);
         GridLayoutManager manager = new GridLayoutManager(this, 2);
@@ -97,6 +114,17 @@ public final class SearchActivity extends AppCompatActivity implements ArtAdapte
             }
             return false;
         });
+        input.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!suppressSuggestions) scheduleSuggestions(s == null ? "" : s.toString());
+            }
+            @Override public void afterTextChanged(Editable s) { }
+        });
+        input.setOnFocusChangeListener((v, focused) -> {
+            if (!focused) hideSuggestions();
+            else if (input.getText() != null) scheduleSuggestions(input.getText().toString());
+        });
 
         MaterialButtonToggleGroup modes = findViewById(R.id.search_mode_group);
         modes.addOnButtonCheckedListener((group, checkedId, checked) -> {
@@ -117,6 +145,7 @@ public final class SearchActivity extends AppCompatActivity implements ArtAdapte
 
     private void applyMode(String value) {
         mode = value;
+        hideSuggestions();
         boolean worksMode = MODE_WORKS.equals(mode);
         refresh.setVisibility(worksMode ? View.VISIBLE : View.GONE);
         filters.setVisibility(worksMode ? View.VISIBLE : View.GONE);
@@ -135,6 +164,7 @@ public final class SearchActivity extends AppCompatActivity implements ArtAdapte
     }
 
     private void search() {
+        hideSuggestions();
         query = input.getText() == null ? "" : input.getText().toString().trim();
         if (query.isEmpty()) {
             refresh.setRefreshing(false);
@@ -144,6 +174,74 @@ public final class SearchActivity extends AppCompatActivity implements ArtAdapte
         if (MODE_USERS.equals(mode)) searchUsers();
         else if (MODE_ID.equals(mode)) searchId();
         else searchWorks();
+    }
+
+    private void scheduleSuggestions(String raw) {
+        if (pendingSuggestion != null) suggestionHandler.removeCallbacks(pendingSuggestion);
+        String word = raw == null ? "" : raw.trim();
+        if (!MODE_WORKS.equals(mode) || word.isEmpty() || word.length() > 80) {
+            hideSuggestions();
+            return;
+        }
+        final int generation = ++suggestionGeneration;
+        pendingSuggestion = () -> suggestionExecutor.execute(() -> {
+            try {
+                List<TrendingTag> values = repository.autocomplete(word);
+                runOnUiThread(() -> {
+                    String current = input.getText() == null ? "" : input.getText().toString().trim();
+                    if (generation == suggestionGeneration && word.equals(current)
+                            && input.hasFocus() && MODE_WORKS.equals(mode)) {
+                        renderSuggestions(word, values);
+                    }
+                });
+            } catch (Exception ignored) {
+                runOnUiThread(() -> {
+                    if (generation == suggestionGeneration) hideSuggestions();
+                });
+            }
+        });
+        suggestionHandler.postDelayed(pendingSuggestion, 380L);
+    }
+
+    private void renderSuggestions(String word, List<TrendingTag> values) {
+        suggestionList.removeAllViews();
+        int count = Math.min(8, values.size());
+        for (int i = 0; i < count; i++) {
+            TrendingTag value = values.get(i);
+            View row = LayoutInflater.from(this).inflate(R.layout.item_search_suggestion, suggestionList, false);
+            TextView title = row.findViewById(R.id.suggestion_title);
+            TextView translation = row.findViewById(R.id.suggestion_translation);
+            title.setText(highlight(value.name, word));
+            boolean showTranslation = !value.translatedName.isEmpty()
+                    && !value.translatedName.equalsIgnoreCase(value.name);
+            translation.setText(showTranslation ? value.translatedName : "Pixiv 关联标签");
+            row.setOnClickListener(v -> {
+                suppressSuggestions = true;
+                input.setText(value.name);
+                input.setSelection(value.name.length());
+                suppressSuggestions = false;
+                hideSuggestions();
+                search();
+            });
+            suggestionList.addView(row);
+        }
+        suggestionCard.setVisibility(count == 0 ? View.GONE : View.VISIBLE);
+    }
+
+    private CharSequence highlight(String text, String word) {
+        SpannableString value = new SpannableString(text);
+        String lower = text.toLowerCase(Locale.ROOT);
+        String needle = word.toLowerCase(Locale.ROOT);
+        int start = lower.indexOf(needle);
+        if (start >= 0) value.setSpan(new ForegroundColorSpan(getColor(R.color.pink_500)),
+                start, start + needle.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return value;
+    }
+
+    private void hideSuggestions() {
+        suggestionGeneration++;
+        if (pendingSuggestion != null) suggestionHandler.removeCallbacks(pendingSuggestion);
+        suggestionCard.setVisibility(View.GONE);
     }
 
     private void searchWorks() {
@@ -367,5 +465,10 @@ public final class SearchActivity extends AppCompatActivity implements ArtAdapte
     }
 
     @Override public void onFilter(String type) { }
-    @Override protected void onDestroy() { executor.shutdownNow(); super.onDestroy(); }
+    @Override protected void onDestroy() {
+        if (pendingSuggestion != null) suggestionHandler.removeCallbacks(pendingSuggestion);
+        suggestionExecutor.shutdownNow();
+        executor.shutdownNow();
+        super.onDestroy();
+    }
 }

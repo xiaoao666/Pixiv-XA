@@ -79,6 +79,26 @@ public final class PixivApiClient {
         return result;
     }
 
+    public List<TrendingTag> autocomplete(String accessToken, String word) throws Exception {
+        JSONObject json = get(accessToken, "/v2/search/autocomplete", mapOf(
+                "word", word,
+                "merge_plain_keyword_results", "true",
+                "include_translated_tag_results", "true"
+        ));
+        JSONArray array = json.optJSONArray("tags");
+        if (array == null) array = json.optJSONArray("trend_tags");
+        List<TrendingTag> result = new ArrayList<>();
+        if (array == null) return result;
+        for (int i = 0; i < Math.min(10, array.length()); i++) {
+            JSONObject item = array.optJSONObject(i);
+            if (item == null) continue;
+            String name = item.optString("name", item.optString("tag", ""));
+            if (!name.isEmpty()) result.add(new TrendingTag(
+                    name, item.optString("translated_name", ""), null));
+        }
+        return result;
+    }
+
     public ArtPage nextPage(String accessToken, String nextUrl) throws Exception {
         if (nextUrl == null || nextUrl.isEmpty()) return new ArtPage(new ArrayList<>(), "");
         Request request = baseRequest(accessToken, nextUrl).get().build();

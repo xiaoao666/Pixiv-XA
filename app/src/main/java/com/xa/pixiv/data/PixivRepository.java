@@ -64,6 +64,12 @@ public final class PixivRepository {
         catch (Exception ignored) { return new ArrayList<>(); }
     }
 
+    public List<TrendingTag> autocomplete(String word) throws Exception {
+        if (!session.isLoggedIn() || word == null || word.trim().isEmpty()) return new ArrayList<>();
+        ensureFreshToken();
+        return api.autocomplete(session.getAccessToken(), word.trim());
+    }
+
     public ArtPage loadR18(String mode) {
         if (!session.isLoggedIn()) return demoPage();
         try { ensureFreshToken(); return prepare(api.ranking(session.getAccessToken(), mode)); }

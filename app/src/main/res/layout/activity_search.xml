@@ -21,6 +21,26 @@
             android:inputType="text" android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/search_suggestions_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="14dp"
+        android:layout_marginTop="4dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/xa_surface"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="3dp"
+        app:strokeColor="@color/xa_outline"
+        app:strokeWidth="1dp">
+        <LinearLayout
+            android:id="@+id/search_suggestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="5dp" />
+    </com.google.android.material.card.MaterialCardView>
+
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/search_mode_group"
         android:layout_width="match_parent"
