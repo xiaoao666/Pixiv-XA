@@ -1,24 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ink_950">#0C1020</color>
-    <color name="ink_900">#13182B</color>
-    <color name="ink_800">#222A43</color>
-    <color name="paper_50">#F7F8FC</color>
-    <color name="paper_100">#EFF1F8</color>
-    <color name="paper_200">#DDE2F0</color>
-    <color name="ink_text">#13182B</color>
-    <color name="ink_muted">#68708B</color>
-    <color name="pink_500">#FF6FAE</color>
-    <color name="pink_300">#FFB3D1</color>
-    <color name="cyan_400">#68E2F0</color>
-    <color name="violet_400">#9386FF</color>
+    <!-- Brand accents -->
+    <color name="pink_500">#FF74A8</color>
+    <color name="pink_300">#FFB9D4</color>
+    <color name="pink_100">#FFE9F2</color>
+    <color name="violet_400">#8E7CF8</color>
+    <color name="violet_100">#EFEBFF</color>
+    <color name="cyan_400">#4FD4EC</color>
+    <color name="cyan_100">#E2F8FD</color>
+
+    <!-- Ink / paper scale -->
+    <color name="ink_950">#0F0D1A</color>
+    <color name="ink_900">#161326</color>
+    <color name="ink_800">#242038</color>
+    <color name="paper_50">#F8F6FC</color>
+    <color name="paper_100">#F1EDF9</color>
+    <color name="paper_200">#E4DEF2</color>
+    <color name="ink_text">#1A1730</color>
+    <color name="ink_muted">#7A758F</color>
     <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
-    <color name="xa_background">#F7F8FC</color>
-    <color name="xa_surface">#F2FFFFFF</color>
-    <color name="xa_surface_soft">#DDE7EAF4</color>
-    <color name="xa_text">#13182B</color>
-    <color name="xa_muted">#68708B</color>
-    <color name="xa_outline">#D7DBE8</color>
+
+    <!-- Semantic tokens (day) -->
+    <color name="xa_background">#F8F6FC</color>
+    <color name="xa_surface">#FAFFFFFF</color>
+    <color name="xa_surface_solid">#FFFFFF</color>
+    <color name="xa_surface_soft">#E6F1EDF9</color>
+    <color name="xa_surface_container">#F3EFFA</color>
+    <color name="xa_text">#1A1730</color>
+    <color name="xa_muted">#7A758F</color>
+    <color name="xa_outline">#ECE7F5</color>
+    <color name="xa_outline_strong">#D9D2E8</color>
     <color name="xa_nav">#F8FFFFFF</color>
+
+    <!-- Accent containers (day) -->
+    <color name="xa_primary_container">#FFE7F1</color>
+    <color name="xa_on_primary_container">#C2417B</color>
+    <color name="xa_secondary_container">#EDE9FF</color>
+    <color name="xa_on_secondary_container">#5F4DC7</color>
+    <color name="xa_tertiary_container">#DFF6FB</color>
+    <color name="xa_on_tertiary_container">#0E7E97</color>
+
+    <!-- Shared overlay colors (same in both modes) -->
+    <color name="xa_glass_badge">#A6141126</color>
+    <color name="xa_scrim_deep">#CC0F0D1A</color>
 </resources>

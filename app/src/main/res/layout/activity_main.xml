@@ -19,8 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/main_toolbar_height"
             android:background="@android:color/transparent"
-            android:paddingStart="12dp"
-            android:paddingEnd="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="10dp"
             app:contentInsetStartWithNavigation="0dp">
 
             <LinearLayout
@@ -40,10 +40,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-black"
-                        android:letterSpacing="0.08"
-                        android:text="XA / ART ATLAS"
+                        android:letterSpacing="0.06"
+                        android:text="XA · ART ATLAS"
                         android:textColor="@color/xa_text"
-                        android:textSize="19sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/subtitle"
@@ -57,12 +57,13 @@
 
                 <ImageButton
                     android:id="@+id/search_button"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
                     android:background="@drawable/bg_soft_pill"
                     android:contentDescription="搜索"
-                    android:padding="12dp"
-                    android:src="@drawable/ic_search" />
+                    android:padding="11dp"
+                    android:src="@drawable/ic_search"
+                    app:tint="@color/xa_text" />
             </LinearLayout>
         </com.google.android.material.appbar.MaterialToolbar>
 
@@ -77,6 +78,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/main_nav_height"
             android:background="@color/xa_nav"
+            app:elevation="0dp"
+            app:itemActiveIndicatorStyle="@style/Widget.XA.NavIndicator"
             app:itemIconTint="@color/bottom_nav_tint"
             app:itemTextColor="@color/bottom_nav_tint"
             app:labelVisibilityMode="labeled"

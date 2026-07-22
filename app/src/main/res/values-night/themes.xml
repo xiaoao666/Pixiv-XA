@@ -1,14 +1,33 @@
 <resources>
+    <!-- Night overrides: color tokens already switch via values-night/colors.xml,
+         only the system bar icon tint differs here. -->
     <style name="Theme.PixivXA" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:fontFamily">sans</item>
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:statusBarColor">@color/ink_950</item>
-        <item name="android:navigationBarColor">@color/ink_950</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowNoTitle">true</item>
+
         <item name="colorPrimary">@color/pink_500</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/cyan_400</item>
-        <item name="colorOnSecondary">@color/ink_950</item>
-        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimaryContainer">@color/xa_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/xa_on_primary_container</item>
+        <item name="colorSecondary">@color/violet_400</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/xa_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/xa_on_secondary_container</item>
+        <item name="colorTertiary">@color/cyan_400</item>
+        <item name="colorTertiaryContainer">@color/xa_tertiary_container</item>
+        <item name="colorOnTertiaryContainer">@color/xa_on_tertiary_container</item>
+        <item name="android:colorBackground">@color/xa_background</item>
+        <item name="colorSurface">@color/xa_surface_solid</item>
+        <item name="colorOnSurface">@color/xa_text</item>
+        <item name="colorSurfaceVariant">@color/xa_surface_container</item>
+        <item name="colorOnSurfaceVariant">@color/xa_muted</item>
+        <item name="colorOutline">@color/xa_outline_strong</item>
+        <item name="colorOutlineVariant">@color/xa_outline</item>
+
+        <item name="chipStyle">@style/Widget.XA.Chip</item>
     </style>
 </resources>

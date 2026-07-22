@@ -16,5 +16,5 @@
     <TextView android:id="@+id/author_empty" android:layout_width="match_parent" android:layout_height="wrap_content"
         android:gravity="center" android:padding="18dp" android:text="暂时没有公开插画"
         android:textColor="@color/xa_muted" android:visibility="gone" />
-    <androidx.recyclerview.widget.RecyclerView android:id="@+id/author_list" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:clipToPadding="false" android:paddingHorizontal="10dp" android:paddingBottom="24dp" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/author_list" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:clipToPadding="false" android:paddingHorizontal="@dimen/grid_side_padding" android:paddingBottom="24dp" />
 </LinearLayout>

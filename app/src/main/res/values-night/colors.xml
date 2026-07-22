@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="xa_background">#0C1020</color>
-    <color name="xa_surface">#E6161D30</color>
-    <color name="xa_surface_soft">#CC222A43</color>
-    <color name="xa_text">#F7F8FC</color>
-    <color name="xa_muted">#A8B0C8</color>
-    <color name="xa_outline">#35405B</color>
-    <color name="xa_nav">#F2141929</color>
+    <!-- Semantic tokens (night) -->
+    <color name="xa_background">#0F0D1A</color>
+    <color name="xa_surface">#F0191529</color>
+    <color name="xa_surface_solid">#191529</color>
+    <color name="xa_surface_soft">#CC262138</color>
+    <color name="xa_surface_container">#1E1930</color>
+    <color name="xa_text">#F3F0FB</color>
+    <color name="xa_muted">#9C96B4</color>
+    <color name="xa_outline">#2B2540</color>
+    <color name="xa_outline_strong">#3A3354</color>
+    <color name="xa_nav">#F5141122</color>
+
+    <!-- Accent containers (night) -->
+    <color name="xa_primary_container">#3D2233</color>
+    <color name="xa_on_primary_container">#FFAECD</color>
+    <color name="xa_secondary_container">#2B2547</color>
+    <color name="xa_on_secondary_container">#C0B4FF</color>
+    <color name="xa_tertiary_container">#123240</color>
+    <color name="xa_on_tertiary_container">#8FE4F5</color>
 </resources>

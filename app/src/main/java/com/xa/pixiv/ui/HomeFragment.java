@@ -9,8 +9,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.xa.pixiv.DetailActivity;
 import com.xa.pixiv.R;
@@ -44,10 +44,8 @@ public final class HomeFragment extends Fragment implements ArtAdapter.Listener 
         refresh = view.findViewById(R.id.swipe_refresh);
         RecyclerView recycler = view.findViewById(R.id.recycler);
         adapter = new ArtAdapter(true, this);
-        GridLayoutManager manager = new GridLayoutManager(requireContext(), 2);
-        manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override public int getSpanSize(int position) { return position == 0 ? 2 : 1; }
-        });
+        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        manager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         recycler.setLayoutManager(manager);
         recycler.setAdapter(adapter);
         refresh.setColorSchemeResources(R.color.pink_500, R.color.cyan_400, R.color.violet_400);
@@ -55,7 +53,7 @@ public final class HomeFragment extends Fragment implements ArtAdapter.Listener 
         recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override public void onScrolled(@NonNull RecyclerView list, int dx, int dy) {
                 if (dy > 0 && !loadingMore && !nextUrl.isEmpty()
-                        && manager.findLastVisibleItemPosition() >= adapter.getItemCount() - 5) loadNext();
+                        && GridScroll.lastVisible(manager) >= adapter.getItemCount() - 5) loadNext();
             }
         });
         load(true);

@@ -1,6 +1,6 @@
 <resources>
     <dimen name="main_toolbar_height">72dp</dimen>
-    <dimen name="main_nav_height">74dp</dimen>
+    <dimen name="main_nav_height">70dp</dimen>
     <dimen name="main_nav_fallback_inset">18dp</dimen>
     <dimen name="space_2">2dp</dimen>
     <dimen name="space_4">4dp</dimen>
@@ -11,4 +11,8 @@
     <dimen name="space_24">24dp</dimen>
     <dimen name="space_32">32dp</dimen>
     <dimen name="card_radius">22dp</dimen>
+    <dimen name="hero_radius">28dp</dimen>
+    <dimen name="page_side_padding">16dp</dimen>
+    <dimen name="grid_side_padding">10dp</dimen>
+    <dimen name="grid_item_gap">6dp</dimen>
 </resources>

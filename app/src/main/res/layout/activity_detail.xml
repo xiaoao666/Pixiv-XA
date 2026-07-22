@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingBottom="92dp">
+        android:paddingBottom="96dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,7 +18,7 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="520dp"
+                android:layout_height="500dp"
                 android:background="@color/ink_950">
 
                 <ImageView
@@ -39,7 +39,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
-                    android:layout_margin="14dp"
+                    android:layout_marginEnd="14dp"
+                    android:layout_marginBottom="40dp"
                     android:background="@drawable/bg_image_badge"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="7dp"
@@ -49,28 +50,55 @@
                     android:visibility="gone" />
             </FrameLayout>
 
+            <!-- Rounded sheet overlapping the artwork -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="-28dp"
+                android:background="@drawable/bg_detail_sheet"
                 android:orientation="vertical"
                 android:paddingStart="20dp"
-                android:paddingTop="20dp"
+                android:paddingTop="10dp"
                 android:paddingEnd="20dp"
                 android:paddingBottom="28dp">
 
-                <TextView
-                    android:id="@+id/detail_badge"
-                    android:layout_width="wrap_content"
+                <View
+                    android:layout_width="36dp"
+                    android:layout_height="4dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/bg_sheet_handle" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_soft_pill"
-                    android:paddingStart="10dp"
-                    android:paddingTop="6dp"
-                    android:paddingEnd="10dp"
-                    android:paddingBottom="6dp"
-                    android:text="ILLUSTRATION"
-                    android:textColor="@color/pink_500"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="14dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/detail_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_soft_pill"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="6dp"
+                        android:text="ILLUSTRATION"
+                        android:textColor="@color/pink_500"
+                        android:letterSpacing="0.1"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/detail_stats"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:gravity="end|center_vertical"
+                        android:textColor="@color/xa_muted"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/detail_title"
@@ -79,21 +107,17 @@
                     android:layout_marginTop="12dp"
                     android:fontFamily="sans-serif-black"
                     android:textColor="@color/xa_text"
-                    android:textSize="27sp" />
+                    android:textSize="25sp" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/detail_author_card"
+                    style="@style/Widget.XA.Card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="16dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/xa_surface"
-                    app:cardCornerRadius="22dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="@color/xa_outline"
-                    app:strokeWidth="1dp">
+                    android:foreground="?attr/selectableItemBackground">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -104,14 +128,14 @@
 
                         <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/detail_author_avatar"
-                            android:layout_width="56dp"
-                            android:layout_height="56dp"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
                             android:contentDescription="画师头像"
                             android:scaleType="centerCrop"
                             android:src="@mipmap/ic_launcher_round"
                             app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
                             app:strokeColor="@color/pink_300"
-                            app:strokeWidth="2dp" />
+                            app:strokeWidth="1.5dp" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -127,67 +151,64 @@
                                 android:ellipsize="end"
                                 android:maxLines="1"
                                 android:textColor="@color/xa_text"
-                                android:textSize="16sp"
+                                android:textSize="15sp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/detail_author_action"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
+                                android:layout_marginTop="3dp"
                                 android:text="查看画师主页  ›"
-                                android:textColor="@color/pink_500"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
+                                android:textColor="@color/xa_muted"
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/detail_author_follow"
-                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            style="@style/Widget.Material3.Button.TonalButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="44dp"
+                            android:layout_height="42dp"
                             android:minWidth="76dp"
                             android:text="加载中"
                             android:textAllCaps="false"
-                            android:textColor="@color/pink_500"
-                            app:cornerRadius="16dp"
-                            app:strokeColor="@color/pink_300" />
+                            android:textColor="@color/xa_on_primary_container"
+                            app:backgroundTint="@color/xa_primary_container"
+                            app:cornerRadius="16dp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-
-                <TextView
-                    android:id="@+id/detail_stats"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:textColor="@color/xa_text"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/detail_tags"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="13dp"
+                    android:layout_marginTop="14dp"
                     app:chipSpacingHorizontal="7dp"
                     app:chipSpacingVertical="2dp" />
 
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp" android:text="相关推荐" android:textColor="@color/xa_text"
-                    android:textSize="19sp" android:textStyle="bold" />
-                <com.google.android.material.button.MaterialButton android:id="@+id/related_all"
-                    style="@style/Widget.Material3.Button.TextButton" android:layout_width="wrap_content"
-                    android:layout_height="44dp" android:layout_gravity="end" android:text="查看全部 · 持续加载 ›"
-                    android:textAllCaps="false" android:textColor="@color/pink_500" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="26dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="相关推荐"
+                        android:textAppearance="@style/TextAppearance.XA.SectionTitle" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/related_all"
+                        style="@style/Widget.XA.Button.Text" android:layout_width="wrap_content"
+                        android:layout_height="40dp" android:text="查看全部 ›"
+                        android:textColor="@color/pink_500" android:textSize="13sp" />
+                </LinearLayout>
                 <HorizontalScrollView android:layout_width="match_parent" android:layout_height="190dp"
-                    android:layout_marginTop="10dp" android:clipToPadding="false" android:scrollbars="none">
+                    android:layout_marginTop="8dp" android:clipToPadding="false" android:scrollbars="none">
                     <LinearLayout android:id="@+id/related_strip" android:layout_width="wrap_content"
                         android:layout_height="match_parent" android:orientation="horizontal" />
                 </HorizontalScrollView>
 
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp" android:text="评论" android:textColor="@color/xa_text"
-                    android:textSize="19sp" android:textStyle="bold" />
+                    android:layout_marginTop="26dp" android:text="评论"
+                    android:textAppearance="@style/TextAppearance.XA.SectionTitle" />
 
                 <LinearLayout
                     android:id="@+id/reply_banner"
@@ -203,29 +224,31 @@
                         android:layout_height="wrap_content" android:layout_weight="1"
                         android:textColor="@color/xa_text" android:textSize="12sp" />
                     <com.google.android.material.button.MaterialButton android:id="@+id/reply_cancel"
-                        style="@style/Widget.Material3.Button.TextButton" android:layout_width="wrap_content"
-                        android:layout_height="44dp" android:text="取消回复" android:textAllCaps="false"
+                        style="@style/Widget.XA.Button.Text" android:layout_width="wrap_content"
+                        android:layout_height="44dp" android:text="取消回复"
                         android:textColor="@color/pink_500" />
                 </LinearLayout>
 
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp" android:gravity="center_vertical" android:orientation="horizontal">
+                    android:layout_marginTop="10dp" android:gravity="center_vertical" android:orientation="horizontal">
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                        android:hint="写下评论" app:boxBackgroundMode="filled" app:boxCornerRadiusTopStart="18dp"
+                        android:hint="写下评论" app:boxBackgroundColor="@color/xa_surface_container"
+                        app:boxBackgroundMode="filled" app:boxStrokeWidth="0dp" app:boxStrokeWidthFocused="1dp"
+                        app:hintTextColor="@color/xa_muted" app:boxCornerRadiusTopStart="18dp"
                         app:boxCornerRadiusTopEnd="18dp" app:boxCornerRadiusBottomStart="18dp" app:boxCornerRadiusBottomEnd="18dp">
                         <com.google.android.material.textfield.TextInputEditText android:id="@+id/comment_input"
                             android:layout_width="match_parent" android:layout_height="wrap_content" android:maxLines="4" />
                     </com.google.android.material.textfield.TextInputLayout>
                     <com.google.android.material.button.MaterialButton android:id="@+id/comment_send"
                         android:layout_width="wrap_content" android:layout_height="52dp" android:layout_marginStart="8dp"
-                        android:text="发布" android:textAllCaps="false" />
+                        android:text="发布" android:textAllCaps="false" app:cornerRadius="18dp" />
                 </LinearLayout>
                 <TextView android:id="@+id/comments_empty" android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:paddingVertical="16dp" android:text="评论加载中…" android:textColor="@color/xa_muted" />
                 <com.google.android.material.button.MaterialButton android:id="@+id/comment_stamps"
-                    style="@style/Widget.Material3.Button.TextButton" android:layout_width="wrap_content" android:layout_height="44dp"
-                    android:text="选择 Pixiv 贴图" android:textAllCaps="false" android:textColor="@color/pink_500" />
+                    style="@style/Widget.XA.Button.Text" android:layout_width="wrap_content" android:layout_height="44dp"
+                    android:text="选择 Pixiv 贴图" android:textColor="@color/pink_500" />
                 <HorizontalScrollView android:id="@+id/stamp_scroller" android:layout_width="match_parent" android:layout_height="92dp" android:scrollbars="none" android:visibility="gone">
                     <LinearLayout android:id="@+id/stamp_list" android:layout_width="wrap_content" android:layout_height="match_parent" android:orientation="horizontal" />
                 </HorizontalScrollView>
@@ -247,25 +270,26 @@
 
     <ImageButton
         android:id="@+id/back_button"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
         android:layout_gravity="top|start"
-        android:layout_margin="16dp"
+        android:layout_margin="14dp"
         android:background="@drawable/bg_image_badge"
         android:contentDescription="返回"
-        android:padding="12dp"
-        android:src="@drawable/ic_arrow_back" />
+        android:padding="11dp"
+        android:src="@drawable/ic_arrow_back"
+        app:tint="@android:color/white" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="70dp"
         android:layout_gravity="bottom"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="14dp"
         app:cardBackgroundColor="@color/xa_nav"
         app:cardCornerRadius="28dp"
-        app:cardElevation="8dp"
+        app:cardElevation="10dp"
         app:strokeColor="@color/xa_outline"
         app:strokeWidth="1dp">
 
@@ -274,7 +298,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="8dp">
+            android:padding="9dp">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/detail_bookmark"
@@ -292,23 +316,25 @@
 
             <ImageButton
                 android:id="@+id/detail_download"
-                android:layout_width="54dp"
-                android:layout_height="54dp"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/bg_soft_pill"
                 android:contentDescription="下载"
                 android:padding="14dp"
-                android:src="@drawable/ic_download" />
+                android:src="@drawable/ic_download"
+                app:tint="@color/xa_text" />
 
             <ImageButton
                 android:id="@+id/detail_share"
-                android:layout_width="54dp"
-                android:layout_height="54dp"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
                 android:layout_marginStart="6dp"
                 android:background="@drawable/bg_soft_pill"
                 android:contentDescription="分享"
                 android:padding="14dp"
-                android:src="@drawable/ic_share" />
+                android:src="@drawable/ic_share"
+                app:tint="@color/xa_text" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </FrameLayout>

@@ -13,11 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.ImageViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
-import com.bumptech.glide.load.model.LazyHeaders;
 import com.google.android.material.chip.Chip;
 import com.xa.pixiv.R;
 import com.xa.pixiv.data.ArtWork;
@@ -78,6 +78,7 @@ public final class ArtAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof HeroHolder) {
             HeroHolder hero = (HeroHolder) holder;
+            fillSpan(hero.itemView);
             hero.modeBadge.setText(loggedIn ? "PIXIV · PERSONAL FEED" : "DEMO · LOCAL GALLERY");
             hero.bind(works, listener);
             return;
@@ -87,6 +88,20 @@ public final class ArtAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     @Override public int getItemCount() { return works.size() + (showHero ? 1 : 0); }
+
+    @Override
+    public void onViewAttachedToWindow(@NonNull RecyclerView.ViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        if (holder instanceof HeroHolder) fillSpan(holder.itemView);
+    }
+
+    /** Hero row must span both columns when hosted by a staggered grid. */
+    private static void fillSpan(View itemView) {
+        ViewGroup.LayoutParams params = itemView.getLayoutParams();
+        if (params instanceof StaggeredGridLayoutManager.LayoutParams) {
+            ((StaggeredGridLayoutManager.LayoutParams) params).setFullSpan(true);
+        }
+    }
 
     private static final class HeroHolder extends RecyclerView.ViewHolder {
         final ViewPager2 pager;
@@ -145,7 +160,7 @@ public final class ArtAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     private static final class ArtHolder extends RecyclerView.ViewHolder {
-        final ImageView image;
+        final RatioImageView image;
         final TextView title;
         final TextView author;
         final TextView badge;
@@ -164,6 +179,7 @@ public final class ArtAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             title.setText(work.getTitle());
             author.setText("by " + work.getAuthor());
             badge.setText(work.getPageCount() > 1 ? "P" + work.getPageCount() : work.getType().toUpperCase(Locale.ROOT));
+            image.setAspect(work.getWidth(), work.getHeight());
             image.setTransitionName("art_image_" + work.getId());
             ColorStateList tint = ColorStateList.valueOf(ContextCompat.getColor(itemView.getContext(),
                     work.isBookmarked() ? R.color.pink_500 : R.color.xa_muted));

@@ -26,10 +26,10 @@
         android:paddingTop="8dp"
         app:singleSelection="true">
         <com.google.android.material.chip.Chip android:id="@+id/tags_illust"
-            style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content"
+            style="@style/Widget.XA.Chip" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:checked="true" android:text="插画标签" />
         <com.google.android.material.chip.Chip android:id="@+id/tags_novel"
-            style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content"
+            style="@style/Widget.XA.Chip" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:text="小说标签" />
     </com.google.android.material.chip.ChipGroup>
 
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:padding="9dp"
+            android:padding="@dimen/grid_side_padding"
             android:paddingBottom="24dp" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

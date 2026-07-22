@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Rounded top sheet that overlaps the artwork hero on the detail page. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@color/xa_background" />
+    <corners android:topLeftRadius="@dimen/hero_radius" android:topRightRadius="@dimen/hero_radius" />
+</shape>

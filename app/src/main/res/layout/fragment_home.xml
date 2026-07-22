@@ -10,8 +10,8 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:layoutAnimation="@anim/layout_stagger"
-        android:paddingStart="12dp"
+        android:paddingStart="@dimen/grid_side_padding"
         android:paddingTop="4dp"
-        android:paddingEnd="12dp"
+        android:paddingEnd="@dimen/grid_side_padding"
         android:paddingBottom="28dp" />
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -10,16 +10,18 @@
         app:titleTextColor="@color/xa_text" app:subtitleTextColor="@color/xa_muted"
         app:navigationIconTint="@color/xa_text" />
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:gravity="center_vertical" android:orientation="horizontal" android:paddingHorizontal="12dp">
+        android:gravity="center_vertical" android:orientation="horizontal" android:paddingHorizontal="12dp"
+        android:paddingTop="6dp">
         <com.google.android.material.button.MaterialButton android:id="@+id/rank_category"
-            style="@style/Widget.Material3.Button.TonalButton" android:layout_width="wrap_content" android:layout_height="44dp"
-            android:text="插画榜" android:textAllCaps="false" />
+            style="@style/Widget.XA.Button.Tonal" android:layout_width="wrap_content" android:layout_height="44dp"
+            android:text="插画榜" />
         <com.google.android.material.button.MaterialButton android:id="@+id/rank_date"
-            style="@style/Widget.Material3.Button.TonalButton" android:layout_width="wrap_content" android:layout_height="44dp"
-            android:layout_marginStart="7dp" android:text="最新一期" android:textAllCaps="false" />
+            style="@style/Widget.XA.Button.Tonal" android:layout_width="wrap_content" android:layout_height="44dp"
+            android:layout_marginStart="7dp" android:text="最新一期"
+            app:backgroundTint="@color/xa_tertiary_container" android:textColor="@color/xa_on_tertiary_container" />
         <com.google.android.material.button.MaterialButton android:id="@+id/rank_reset"
-            style="@style/Widget.Material3.Button.TextButton" android:layout_width="wrap_content" android:layout_height="44dp"
-            android:text="重置日期" android:textAllCaps="false" />
+            style="@style/Widget.XA.Button.Text" android:layout_width="wrap_content" android:layout_height="44dp"
+            android:text="重置日期" android:textColor="@color/pink_500" />
     </LinearLayout>
     <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="none">
         <com.google.android.material.chip.ChipGroup android:id="@+id/rank_modes"
@@ -32,6 +34,6 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:id="@+id/rank_refresh"
         android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
         <androidx.recyclerview.widget.RecyclerView android:id="@+id/rank_list" android:layout_width="match_parent"
-            android:layout_height="match_parent" android:clipToPadding="false" android:paddingHorizontal="9dp" android:paddingBottom="24dp" />
+            android:layout_height="match_parent" android:clipToPadding="false" android:paddingHorizontal="@dimen/grid_side_padding" android:paddingBottom="24dp" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

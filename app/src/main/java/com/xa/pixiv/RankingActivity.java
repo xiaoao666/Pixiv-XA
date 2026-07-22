@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -56,14 +56,15 @@ public final class RankingActivity extends AppCompatActivity implements ArtAdapt
         modes = findViewById(R.id.rank_modes);
         meta = findViewById(R.id.rank_meta);
         RecyclerView list = findViewById(R.id.rank_list);
-        GridLayoutManager manager = new GridLayoutManager(this, 2);
+        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        manager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         list.setLayoutManager(manager);
         adapter = new ArtAdapter(false, this);
         list.setAdapter(adapter);
         list.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 if (dy > 0 && !loading && !nextUrl.isEmpty()
-                        && manager.findLastVisibleItemPosition() >= adapter.getItemCount() - 5) loadNext();
+                        && com.xa.pixiv.ui.GridScroll.lastVisible(manager) >= adapter.getItemCount() - 5) loadNext();
             }
         });
         if (getIntent().getBooleanExtra(EXTRA_R18, false)) {

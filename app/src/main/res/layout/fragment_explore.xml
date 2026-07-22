@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToPadding="false"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
+    android:paddingStart="@dimen/page_side_padding"
+    android:paddingEnd="@dimen/page_side_padding"
     android:paddingBottom="32dp">
 
     <LinearLayout
@@ -16,91 +16,120 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:text="发现星图"
-            android:textColor="@color/xa_text"
-            android:textSize="25sp" />
+            android:text="DISCOVER / SEARCH / RANKING"
+            android:textAppearance="@style/TextAppearance.XA.Overline" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="DISCOVER / SEARCH / RANKING"
-            android:textColor="@color/xa_muted"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            android:fontFamily="sans-serif-black"
+            android:text="发现星图"
+            android:textColor="@color/xa_text"
+            android:textSize="24sp" />
 
+        <!-- Search entry -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/discover_search"
+            style="@style/Widget.XA.Card"
             android:layout_width="match_parent"
-            android:layout_height="112dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
-            app:cardBackgroundColor="@color/xa_surface"
-            app:cardCornerRadius="26dp"
-            app:cardElevation="0dp"
-            app:strokeColor="@color/xa_outline"
-            app:strokeWidth="1dp">
+            app:cardCornerRadius="@dimen/hero_radius">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/bg_feature_wash"
                 android:gravity="center_vertical"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:padding="20dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="搜索 Pixiv 宇宙  ›" android:textColor="@color/xa_text"
-                    android:textSize="20sp" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp" android:text="作品、标签、画师 · 七组完整筛选"
-                    android:textColor="@color/xa_muted" android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="搜索 Pixiv 宇宙" android:textColor="@color/xa_text"
+                        android:textSize="19sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp" android:text="作品、标签、画师 · 七组完整筛选"
+                        android:textColor="@color/xa_muted" android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/bg_soft_pill"
+                    android:contentDescription="搜索"
+                    android:padding="11dp"
+                    android:src="@drawable/ic_search"
+                    app:tint="@color/pink_500" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Ranking / tags entry -->
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_marginTop="12dp" android:orientation="horizontal">
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/discover_ranking" style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="0dp" android:layout_height="64dp" android:layout_weight="1"
-                android:text="独立排行榜" android:textAllCaps="false" />
+                android:id="@+id/discover_ranking" style="@style/Widget.XA.Button.Tonal"
+                android:layout_width="0dp" android:layout_height="60dp" android:layout_weight="1"
+                android:text="排行榜" />
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/discover_tags" style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="0dp" android:layout_height="64dp" android:layout_marginStart="10dp"
-                android:layout_weight="1" android:text="热门标签" android:textAllCaps="false" />
+                android:id="@+id/discover_tags" style="@style/Widget.XA.Button.Tonal"
+                android:layout_width="0dp" android:layout_height="60dp" android:layout_marginStart="10dp"
+                android:layout_weight="1" android:text="热门标签"
+                app:backgroundTint="@color/xa_tertiary_container"
+                android:textColor="@color/xa_on_tertiary_container" />
         </LinearLayout>
 
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:layout_marginTop="22dp" android:text="最新发布"
-            android:textColor="@color/xa_text" android:textSize="18sp" android:textStyle="bold" />
+            android:layout_marginTop="24dp" android:text="最新发布"
+            android:textAppearance="@style/TextAppearance.XA.SectionTitle" />
 
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" android:orientation="horizontal">
-            <com.google.android.material.button.MaterialButton android:id="@+id/discover_latest_illust"
-                style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp"
-                android:layout_height="58dp" android:layout_weight="1" android:text="插画" android:textAllCaps="false" />
-            <com.google.android.material.button.MaterialButton android:id="@+id/discover_latest_manga"
-                style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp"
-                android:layout_height="58dp" android:layout_marginStart="8dp" android:layout_weight="1"
-                android:text="漫画" android:textAllCaps="false" />
-            <com.google.android.material.button.MaterialButton android:id="@+id/discover_latest_novel"
-                style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp"
-                android:layout_height="58dp" android:layout_marginStart="8dp" android:layout_weight="1"
-                android:text="小说" android:textAllCaps="false" />
-        </LinearLayout>
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.XA.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:padding="8dp">
+                <com.google.android.material.button.MaterialButton android:id="@+id/discover_latest_illust"
+                    style="@style/Widget.XA.Button.Text" android:layout_width="0dp"
+                    android:layout_height="54dp" android:layout_weight="1" android:text="插画" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/discover_latest_manga"
+                    style="@style/Widget.XA.Button.Text" android:layout_width="0dp"
+                    android:layout_height="54dp" android:layout_weight="1" android:text="漫画" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/discover_latest_novel"
+                    style="@style/Widget.XA.Button.Text" android:layout_width="0dp"
+                    android:layout_height="54dp" android:layout_weight="1" android:text="小说" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:layout_marginTop="22dp" android:text="你的轨道"
-            android:textColor="@color/xa_text" android:textSize="18sp" android:textStyle="bold" />
+            android:layout_marginTop="24dp" android:text="你的轨道"
+            android:textAppearance="@style/TextAppearance.XA.SectionTitle" />
 
-        <com.google.android.material.button.MaterialButton android:id="@+id/discover_following"
-            style="@style/Widget.Material3.Button.TextButton" android:layout_width="match_parent"
-            android:layout_height="58dp" android:layout_marginTop="6dp" android:gravity="start|center_vertical"
-            android:text="关注画师动态  ›" android:textAllCaps="false" android:textColor="@color/xa_text" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/discover_history"
-            style="@style/Widget.Material3.Button.TextButton" android:layout_width="match_parent"
-            android:layout_height="58dp" android:gravity="start|center_vertical"
-            android:text="浏览记录  ›" android:textAllCaps="false" android:textColor="@color/xa_text" />
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.XA.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="6dp">
+                <com.google.android.material.button.MaterialButton android:id="@+id/discover_following"
+                    style="@style/Widget.XA.SettingRow" android:layout_width="match_parent"
+                    android:layout_height="54dp" android:text="关注画师动态" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/discover_history"
+                    style="@style/Widget.XA.SettingRow" android:layout_width="match_parent"
+                    android:layout_height="54dp" android:text="浏览记录" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

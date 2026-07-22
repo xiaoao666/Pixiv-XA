@@ -4,15 +4,14 @@
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_margin="@dimen/grid_item_gap"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="@color/xa_surface"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/xa_surface_solid"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="1dp"
     app:rippleColor="@color/pink_300"
-    app:strokeColor="@color/xa_outline"
-    app:strokeWidth="1dp">
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,12 +20,12 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="220dp">
+            android:layout_height="wrap_content">
 
-            <ImageView
+            <com.xa.pixiv.ui.RatioImageView
                 android:id="@+id/art_image"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:contentDescription="作品封面"
                 android:scaleType="centerCrop" />
 
@@ -35,12 +34,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|end"
-                android:layout_margin="9dp"
+                android:layout_margin="8dp"
                 android:background="@drawable/bg_image_badge"
-                android:paddingStart="8dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="8dp"
-                android:paddingBottom="4dp"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
                 android:text="P1"
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
@@ -53,9 +50,9 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="12dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="8dp"
-            android:paddingBottom="11dp">
+            android:paddingTop="9dp"
+            android:paddingEnd="6dp"
+            android:paddingBottom="9dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -70,7 +67,7 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:textColor="@color/xa_text"
-                    android:textSize="14sp"
+                    android:textSize="13sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -86,11 +83,11 @@
 
             <ImageButton
                 android:id="@+id/bookmark_button"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:background="@drawable/bg_soft_pill"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="收藏"
-                android:padding="10dp"
+                android:padding="9dp"
                 android:src="@drawable/ic_heart"
                 app:tint="@color/pink_500" />
         </LinearLayout>

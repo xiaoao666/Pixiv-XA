@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -73,7 +73,8 @@ public final class FeedActivity extends AppCompatActivity implements ArtAdapter.
         refresh = findViewById(R.id.feed_refresh);
         empty = findViewById(R.id.feed_empty);
         RecyclerView list = findViewById(R.id.feed_list);
-        GridLayoutManager manager = new GridLayoutManager(this, 2);
+        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        manager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         list.setLayoutManager(manager);
         adapter = new ArtAdapter(false, this);
         list.setAdapter(adapter);
@@ -82,7 +83,7 @@ public final class FeedActivity extends AppCompatActivity implements ArtAdapter.
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 if (dy > 0 && !loading && !nextUrl.isEmpty()
-                        && manager.findLastVisibleItemPosition() >= adapter.getItemCount() - 5) {
+                        && com.xa.pixiv.ui.GridScroll.lastVisible(manager) >= adapter.getItemCount() - 5) {
                     loadNext();
                 }
             }

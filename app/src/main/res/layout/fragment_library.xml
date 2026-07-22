@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToPadding="false"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
+    android:paddingStart="@dimen/page_side_padding"
+    android:paddingEnd="@dimen/page_side_padding"
     android:paddingBottom="32dp">
 
     <LinearLayout
@@ -16,33 +16,30 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:text="我的画室"
-            android:textColor="@color/xa_text"
-            android:textSize="25sp" />
+            android:text="LIBRARY / ACCOUNT / SETTINGS"
+            android:textAppearance="@style/TextAppearance.XA.Overline" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="LIBRARY / ACCOUNT / SETTINGS"
-            android:textColor="@color/xa_muted"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            android:fontFamily="sans-serif-black"
+            android:text="我的画室"
+            android:textColor="@color/xa_text"
+            android:textSize="24sp" />
 
+        <!-- Profile card -->
         <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.XA.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:cardBackgroundColor="@color/xa_surface"
-            app:cardCornerRadius="26dp"
-            app:cardElevation="0dp"
-            app:strokeColor="@color/xa_outline"
-            app:strokeWidth="1dp">
+            app:cardCornerRadius="@dimen/hero_radius">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_feature_wash"
                 android:orientation="vertical"
                 android:padding="18dp">
 
@@ -54,12 +51,14 @@
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/profile_avatar"
-                        android:layout_width="76dp"
-                        android:layout_height="76dp"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
                         android:contentDescription="头像"
                         android:scaleType="centerCrop"
                         android:src="@drawable/demo_art_05"
-                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+                        app:strokeColor="@color/pink_300"
+                        app:strokeWidth="1.5dp" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -74,7 +73,7 @@
                             android:layout_height="wrap_content"
                             android:text="旅人 · Demo"
                             android:textColor="@color/xa_text"
-                            android:textSize="20sp"
+                            android:textSize="19sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -101,6 +100,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:lineSpacingExtra="2dp"
                         android:text="0\n收藏"
                         android:textColor="@color/xa_text"
                         android:textSize="14sp"
@@ -112,6 +112,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:lineSpacingExtra="2dp"
                         android:text="--\n创作"
                         android:textColor="@color/xa_text"
                         android:textSize="14sp"
@@ -123,6 +124,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:lineSpacingExtra="2dp"
                         android:text="0\n浏览记录"
                         android:textColor="@color/xa_text"
                         android:textSize="14sp"
@@ -143,24 +145,19 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Collections -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:text="常用工具"
-            android:textColor="@color/xa_text"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="24dp"
+            android:text="我的内容"
+            android:textAppearance="@style/TextAppearance.XA.SectionTitle" />
 
         <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.XA.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardBackgroundColor="@color/xa_surface"
-            app:cardCornerRadius="22dp"
-            app:cardElevation="0dp"
-            app:strokeColor="@color/xa_outline"
-            app:strokeWidth="1dp">
+            android:layout_marginTop="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -170,70 +167,80 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/bookmarks_button"
-                    style="@style/Widget.Material3.Button.TextButton"
+                    style="@style/Widget.XA.SettingRow"
                     android:layout_width="match_parent"
                     android:layout_height="54dp"
-                    android:gravity="start|center_vertical"
-                    android:text="收藏夹与稍后看"
-                    android:textAllCaps="false"
-                    android:textColor="@color/xa_text" />
+                    android:text="收藏夹与稍后看" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/downloads_button"
-                    style="@style/Widget.Material3.Button.TextButton"
+                    style="@style/Widget.XA.SettingRow"
                     android:layout_width="match_parent"
                     android:layout_height="54dp"
-                    android:gravity="start|center_vertical"
-                    android:text="下载队列与本地画廊"
-                    android:textAllCaps="false"
-                    android:textColor="@color/xa_text" />
+                    android:text="下载队列与本地画廊" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/following_button"
-                    style="@style/Widget.Material3.Button.TextButton"
+                    style="@style/Widget.XA.SettingRow"
                     android:layout_width="match_parent" android:layout_height="54dp"
-                    android:gravity="start|center_vertical" android:text="关注画师的新作"
-                    android:textAllCaps="false" android:textColor="@color/xa_text" />
+                    android:text="关注画师的新作" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/history_button"
-                    style="@style/Widget.Material3.Button.TextButton"
+                    style="@style/Widget.XA.SettingRow"
                     android:layout_width="match_parent" android:layout_height="54dp"
-                    android:gravity="start|center_vertical" android:text="浏览记录"
-                    android:textAllCaps="false" android:textColor="@color/xa_text" />
+                    android:text="浏览记录" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/r18_button"
-                    style="@style/Widget.Material3.Button.TextButton"
-                    android:layout_width="match_parent" android:layout_height="54dp"
-                    android:gravity="start|center_vertical" android:text="R18 排行榜"
-                    android:textAllCaps="false" android:textColor="@color/xa_text" />
+        <!-- Preferences -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="偏好设置"
+            android:textAppearance="@style/TextAppearance.XA.SectionTitle" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.XA.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="6dp">
 
                 <com.google.android.material.materialswitch.MaterialSwitch
                     android:id="@+id/r18_switch"
                     android:layout_width="match_parent" android:layout_height="56dp"
                     android:paddingHorizontal="16dp" android:text="显示 R18 内容入口"
-                    android:textColor="@color/xa_text" />
+                    android:textColor="@color/xa_text" android:textSize="15sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/r18_button"
+                    style="@style/Widget.XA.SettingRow"
+                    android:layout_width="match_parent" android:layout_height="54dp"
+                    android:text="R18 排行榜" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/theme_button"
-                    style="@style/Widget.Material3.Button.TextButton"
+                    style="@style/Widget.XA.SettingRow"
                     android:layout_width="match_parent"
                     android:layout_height="54dp"
-                    android:gravity="start|center_vertical"
-                    android:text="切换昼夜主题"
-                    android:textAllCaps="false"
-                    android:textColor="@color/xa_text" />
+                    android:text="切换昼夜主题" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/network_button" style="@style/Widget.Material3.Button.TextButton"
-                    android:layout_width="match_parent" android:layout_height="54dp" android:gravity="start|center_vertical"
-                    android:text="网络模式：安全 DNS" android:textAllCaps="false" android:textColor="@color/xa_text" />
+                    android:id="@+id/network_button" style="@style/Widget.XA.SettingRow"
+                    android:layout_width="match_parent" android:layout_height="54dp"
+                    android:text="网络模式：安全 DNS" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/image_host_button" style="@style/Widget.Material3.Button.TextButton"
-                    android:layout_width="match_parent" android:layout_height="54dp" android:gravity="start|center_vertical"
-                    android:text="图片加速源：自动" android:textAllCaps="false" android:textColor="@color/xa_text" />
+                    android:id="@+id/image_host_button" style="@style/Widget.XA.SettingRow"
+                    android:layout_width="match_parent" android:layout_height="54dp"
+                    android:text="图片加速源：自动" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

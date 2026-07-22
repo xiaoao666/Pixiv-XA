@@ -1,14 +1,117 @@
 <resources>
     <style name="Theme.PixivXA" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:fontFamily">sans</item>
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:statusBarColor">@color/paper_50</item>
-        <item name="android:navigationBarColor">@color/paper_50</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowNoTitle">true</item>
+
         <item name="colorPrimary">@color/pink_500</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/xa_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/xa_on_primary_container</item>
         <item name="colorSecondary">@color/violet_400</item>
         <item name="colorOnSecondary">@color/white</item>
-        <item name="android:windowNoTitle">true</item>
+        <item name="colorSecondaryContainer">@color/xa_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/xa_on_secondary_container</item>
+        <item name="colorTertiary">@color/cyan_400</item>
+        <item name="colorTertiaryContainer">@color/xa_tertiary_container</item>
+        <item name="colorOnTertiaryContainer">@color/xa_on_tertiary_container</item>
+        <item name="android:colorBackground">@color/xa_background</item>
+        <item name="colorSurface">@color/xa_surface_solid</item>
+        <item name="colorOnSurface">@color/xa_text</item>
+        <item name="colorSurfaceVariant">@color/xa_surface_container</item>
+        <item name="colorOnSurfaceVariant">@color/xa_muted</item>
+        <item name="colorOutline">@color/xa_outline_strong</item>
+        <item name="colorOutlineVariant">@color/xa_outline</item>
+
+        <item name="chipStyle">@style/Widget.XA.Chip</item>
+    </style>
+
+    <!-- ===== Text ===== -->
+    <style name="TextAppearance.XA.PageTitle" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:textColor">@color/xa_text</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextAppearance.XA.Overline" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textColor">@color/xa_muted</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.18</item>
+    </style>
+
+    <style name="TextAppearance.XA.SectionTitle" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:textColor">@color/xa_text</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- ===== Cards ===== -->
+    <style name="Widget.XA.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/xa_surface</item>
+        <item name="cardCornerRadius">@dimen/card_radius</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/xa_outline</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="rippleColor">@color/pink_300</item>
+    </style>
+
+    <style name="Widget.XA.Card.Hero">
+        <item name="cardCornerRadius">@dimen/hero_radius</item>
+    </style>
+
+    <!-- ===== Buttons ===== -->
+    <style name="Widget.XA.Button.Tonal" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">18dp</item>
+        <item name="backgroundTint">@color/xa_secondary_container</item>
+        <item name="android:textColor">@color/xa_on_secondary_container</item>
+    </style>
+
+    <style name="Widget.XA.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/xa_text</item>
+        <item name="cornerRadius">16dp</item>
+        <item name="rippleColor">@color/pink_300</item>
+    </style>
+
+    <style name="Widget.XA.Button.Toggle" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="strokeColor">@color/xa_outline_strong</item>
+        <item name="android:textColor">@color/xa_text</item>
+    </style>
+
+    <!-- ===== Chips ===== -->
+    <style name="Widget.XA.Chip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip_bg_tint</item>
+        <item name="android:textColor">@color/chip_text_tint</item>
+        <item name="chipStrokeColor">@color/xa_outline</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipCornerRadius">14dp</item>
+        <item name="checkedIconVisible">false</item>
+    </style>
+
+    <!-- ===== Bottom nav ===== -->
+    <style name="Widget.XA.NavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/xa_primary_container</item>
+    </style>
+
+    <!-- ===== List row (settings style) ===== -->
+    <style name="Widget.XA.SettingRow" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/xa_text</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="cornerRadius">16dp</item>
+        <item name="rippleColor">@color/pink_300</item>
+        <item name="iconTint">@color/pink_500</item>
+        <item name="iconSize">20dp</item>
+        <item name="iconPadding">14dp</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">14dp</item>
     </style>
 </resources>

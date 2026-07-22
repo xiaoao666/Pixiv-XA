@@ -20,7 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -93,14 +93,15 @@ public final class SearchActivity extends AppCompatActivity implements ArtAdapte
         suggestionList = findViewById(R.id.search_suggestions);
 
         RecyclerView list = findViewById(R.id.search_page_list);
-        GridLayoutManager manager = new GridLayoutManager(this, 2);
+        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        manager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         list.setLayoutManager(manager);
         adapter = new ArtAdapter(false, this);
         list.setAdapter(adapter);
         list.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override public void onScrolled(RecyclerView recycler, int dx, int dy) {
                 if (MODE_WORKS.equals(mode) && dy > 0 && !loading && !nextUrl.isEmpty()
-                        && manager.findLastVisibleItemPosition() >= adapter.getItemCount() - 5) loadNext();
+                        && com.xa.pixiv.ui.GridScroll.lastVisible(manager) >= adapter.getItemCount() - 5) loadNext();
             }
         });
 

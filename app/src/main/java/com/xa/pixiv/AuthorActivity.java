@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -48,14 +48,15 @@ public final class AuthorActivity extends AppCompatActivity implements ArtAdapte
         repository = new PixivRepository(this);
         ((MaterialToolbar) findViewById(R.id.author_toolbar)).setNavigationOnClickListener(v -> finish());
         RecyclerView list = findViewById(R.id.author_list);
-        GridLayoutManager manager = new GridLayoutManager(this, 2);
+        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        manager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         list.setLayoutManager(manager);
         adapter = new ArtAdapter(false, this);
         list.setAdapter(adapter);
         list.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 if (dy > 0 && !loading && !nextUrl.isEmpty()
-                        && manager.findLastVisibleItemPosition() >= adapter.getItemCount() - 5) loadNext();
+                        && com.xa.pixiv.ui.GridScroll.lastVisible(manager) >= adapter.getItemCount() - 5) loadNext();
             }
         });
         findViewById(R.id.author_follow).setOnClickListener(v -> toggleFollow());

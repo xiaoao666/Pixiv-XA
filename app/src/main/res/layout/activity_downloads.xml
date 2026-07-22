@@ -20,15 +20,11 @@
         app:titleTextColor="@color/xa_text" />
 
     <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.XA.Card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="12dp"
-        android:layout_marginTop="10dp"
-        app:cardBackgroundColor="@color/xa_surface"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="0dp"
-        app:strokeColor="@color/xa_outline"
-        app:strokeWidth="1dp">
+        android:layout_marginHorizontal="@dimen/page_side_padding"
+        android:layout_marginTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -132,8 +128,9 @@
             android:background="@drawable/bg_empty_download"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="24dp">
-            <ImageView android:layout_width="48dp" android:layout_height="48dp"
+            android:padding="28dp">
+            <ImageView android:layout_width="52dp" android:layout_height="52dp"
+                android:background="@drawable/bg_soft_pill" android:padding="13dp"
                 android:contentDescription="下载" android:src="@drawable/ic_download" app:tint="@color/pink_500" />
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:layout_marginTop="10dp" android:text="这里还很安静" android:textColor="@color/xa_text"
