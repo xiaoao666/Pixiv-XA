@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Halo -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M31,29C38,21 70,21 78,29C70,35 39,35 31,29Z"
+        android:strokeColor="#E8FFFFFF"
+        android:strokeWidth="2.3" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M79,19L81,24L86,26L81,28L79,33L77,28L72,26L77,24Z" />
+
+    <!-- Hair back and cat ears -->
+    <path android:fillColor="#FF313A67" android:pathData="M31,45L26,25L43,36Z" />
+    <path android:fillColor="#FF313A67" android:pathData="M77,45L82,25L65,36Z" />
+    <path android:fillColor="#FFFFB4D0" android:pathData="M31,36L29,29L39,37Z" />
+    <path android:fillColor="#FFFFB4D0" android:pathData="M77,36L79,29L69,37Z" />
+    <path
+        android:fillColor="#FF313A67"
+        android:pathData="M54,29C35,29 25,41 27,62C29,82 39,88 54,88C70,88 79,82 81,62C83,41 73,29 54,29Z" />
+
+    <!-- Face -->
+    <path
+        android:fillColor="#FFFFE4DC"
+        android:pathData="M54,39C40,39 33,48 34,63C35,77 43,83 54,83C65,83 73,77 74,63C75,48 68,39 54,39Z" />
+
+    <!-- Bangs -->
+    <path android:fillColor="#FF3D4778" android:pathData="M30,49C34,35 43,31 55,32C50,40 45,47 38,53C38,45 36,42 30,49Z" />
+    <path android:fillColor="#FF3D4778" android:pathData="M47,34C54,30 63,32 68,37C66,45 61,50 55,54C56,45 53,40 47,34Z" />
+    <path android:fillColor="#FF3D4778" android:pathData="M63,35C73,39 78,47 77,57C72,53 68,47 63,35Z" />
+
+    <!-- Eyes -->
+    <path android:fillColor="#FF18213E" android:pathData="M38,59C40,54 47,54 49,59C47,64 40,64 38,59Z" />
+    <path android:fillColor="#FF18213E" android:pathData="M59,59C61,54 68,54 70,59C68,64 61,64 59,59Z" />
+    <path android:fillColor="#FF72E5F1" android:pathData="M40,59C42,56 46,56 47,59C46,62 42,62 40,59Z" />
+    <path android:fillColor="#FF72E5F1" android:pathData="M61,59C63,56 67,56 68,59C67,62 63,62 61,59Z" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M42,57a1.5,1.5 0,1 0,3 0a1.5,1.5 0,1 0,-3 0" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M63,57a1.5,1.5 0,1 0,3 0a1.5,1.5 0,1 0,-3 0" />
+
+    <!-- Blush and mouth -->
+    <path android:fillColor="#55FF78AD" android:pathData="M35,67a6,3 0,1 0,12 0a6,3 0,1 0,-12 0" />
+    <path android:fillColor="#55FF78AD" android:pathData="M61,67a6,3 0,1 0,12 0a6,3 0,1 0,-12 0" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M50,70C52,73 56,73 58,70"
+        android:strokeColor="#FFB95C7F"
+        android:strokeLineCap="round"
+        android:strokeWidth="1.8" />
+
+    <!-- Tiny XA hairpin -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M69,43L75,49M75,43L69,49"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeLineCap="round"
+        android:strokeWidth="1.8" />
+</vector>

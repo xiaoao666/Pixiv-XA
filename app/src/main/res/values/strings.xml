@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">XA · Art Atlas</string>
+    <string name="app_tagline">把灵感收进自己的星图</string>
+    <string name="nav_home">首页</string>
+    <string name="nav_discover">发现</string>
+    <string name="nav_library">我的</string>
+</resources>

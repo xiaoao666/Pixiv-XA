@@ -1,0 +1,14 @@
+<resources>
+    <dimen name="main_toolbar_height">72dp</dimen>
+    <dimen name="main_nav_height">74dp</dimen>
+    <dimen name="main_nav_fallback_inset">18dp</dimen>
+    <dimen name="space_2">2dp</dimen>
+    <dimen name="space_4">4dp</dimen>
+    <dimen name="space_8">8dp</dimen>
+    <dimen name="space_12">12dp</dimen>
+    <dimen name="space_16">16dp</dimen>
+    <dimen name="space_20">20dp</dimen>
+    <dimen name="space_24">24dp</dimen>
+    <dimen name="space_32">32dp</dimen>
+    <dimen name="card_radius">22dp</dimen>
+</resources>

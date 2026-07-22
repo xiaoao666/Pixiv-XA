@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/xa_background">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="92dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="520dp"
+                android:background="@color/ink_950">
+
+                <ImageView
+                    android:id="@+id/detail_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="查看完整作品图片"
+                    android:scaleType="fitCenter" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/detail_image_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/detail_page_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="14dp"
+                    android:background="@drawable/bg_image_badge"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="7dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingTop="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="28dp">
+
+                <TextView
+                    android:id="@+id/detail_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_soft_pill"
+                    android:paddingStart="10dp"
+                    android:paddingTop="6dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="6dp"
+                    android:text="ILLUSTRATION"
+                    android:textColor="@color/pink_500"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/detail_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/xa_text"
+                    android:textSize="27sp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/detail_author_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/xa_surface"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/xa_outline"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/detail_author_avatar"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:contentDescription="画师头像"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/ic_launcher_round"
+                            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+                            app:strokeColor="@color/pink_300"
+                            app:strokeWidth="2dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/detail_author"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:textColor="@color/xa_text"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/detail_author_action"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="查看画师主页  ›"
+                                android:textColor="@color/pink_500"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/detail_author_follow"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="44dp"
+                            android:minWidth="76dp"
+                            android:text="加载中"
+                            android:textAllCaps="false"
+                            android:textColor="@color/pink_500"
+                            app:cornerRadius="16dp"
+                            app:strokeColor="@color/pink_300" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/detail_stats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:textColor="@color/xa_text"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/detail_tags"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    app:chipSpacingHorizontal="7dp"
+                    app:chipSpacingVertical="2dp" />
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp" android:text="相关推荐" android:textColor="@color/xa_text"
+                    android:textSize="19sp" android:textStyle="bold" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/related_all"
+                    style="@style/Widget.Material3.Button.TextButton" android:layout_width="wrap_content"
+                    android:layout_height="44dp" android:layout_gravity="end" android:text="查看全部 · 持续加载 ›"
+                    android:textAllCaps="false" android:textColor="@color/pink_500" />
+                <HorizontalScrollView android:layout_width="match_parent" android:layout_height="190dp"
+                    android:layout_marginTop="10dp" android:clipToPadding="false" android:scrollbars="none">
+                    <LinearLayout android:id="@+id/related_strip" android:layout_width="wrap_content"
+                        android:layout_height="match_parent" android:orientation="horizontal" />
+                </HorizontalScrollView>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp" android:text="评论" android:textColor="@color/xa_text"
+                    android:textSize="19sp" android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/reply_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_soft_pill"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:visibility="gone">
+                    <TextView android:id="@+id/reply_target" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textColor="@color/xa_text" android:textSize="12sp" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/reply_cancel"
+                        style="@style/Widget.Material3.Button.TextButton" android:layout_width="wrap_content"
+                        android:layout_height="44dp" android:text="取消回复" android:textAllCaps="false"
+                        android:textColor="@color/pink_500" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:gravity="center_vertical" android:orientation="horizontal">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:hint="写下评论" app:boxBackgroundMode="filled" app:boxCornerRadiusTopStart="18dp"
+                        app:boxCornerRadiusTopEnd="18dp" app:boxCornerRadiusBottomStart="18dp" app:boxCornerRadiusBottomEnd="18dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/comment_input"
+                            android:layout_width="match_parent" android:layout_height="wrap_content" android:maxLines="4" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/comment_send"
+                        android:layout_width="wrap_content" android:layout_height="52dp" android:layout_marginStart="8dp"
+                        android:text="发布" android:textAllCaps="false" />
+                </LinearLayout>
+                <TextView android:id="@+id/comments_empty" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:paddingVertical="16dp" android:text="评论加载中…" android:textColor="@color/xa_muted" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/comment_stamps"
+                    style="@style/Widget.Material3.Button.TextButton" android:layout_width="wrap_content" android:layout_height="44dp"
+                    android:text="选择 Pixiv 贴图" android:textAllCaps="false" android:textColor="@color/pink_500" />
+                <HorizontalScrollView android:id="@+id/stamp_scroller" android:layout_width="match_parent" android:layout_height="92dp" android:scrollbars="none" android:visibility="gone">
+                    <LinearLayout android:id="@+id/stamp_list" android:layout_width="wrap_content" android:layout_height="match_parent" android:orientation="horizontal" />
+                </HorizontalScrollView>
+                <LinearLayout android:id="@+id/comments_list" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:orientation="vertical" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/bg_glass_card"
+                    android:padding="16dp"
+                    android:text="作品来自 Pixiv 或你的本地演示图库。XA 仅负责浏览、收藏与下载，不改变作品版权归属。"
+                    android:textColor="@color/xa_muted"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="top|start"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_image_badge"
+        android:contentDescription="返回"
+        android:padding="12dp"
+        android:src="@drawable/ic_arrow_back" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="12dp"
+        app:cardBackgroundColor="@color/xa_nav"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="8dp"
+        app:strokeColor="@color/xa_outline"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/detail_bookmark"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_gradient_button"
+                android:text="收藏"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                app:backgroundTint="@null"
+                app:icon="@drawable/ic_heart"
+                app:iconTint="@android:color/white" />
+
+            <ImageButton
+                android:id="@+id/detail_download"
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_soft_pill"
+                android:contentDescription="下载"
+                android:padding="14dp"
+                android:src="@drawable/ic_download" />
+
+            <ImageButton
+                android:id="@+id/detail_share"
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/bg_soft_pill"
+                android:contentDescription="分享"
+                android:padding="14dp"
+                android:src="@drawable/ic_share" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</FrameLayout>

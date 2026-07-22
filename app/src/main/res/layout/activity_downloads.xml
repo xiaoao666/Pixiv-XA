@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/xa_background" android:orientation="vertical">
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/download_toolbar"
+        android:layout_width="match_parent" android:layout_height="72dp" android:paddingHorizontal="8dp"
+        android:title="下载星港" android:subtitle="下载进度与本地画廊" android:navigationIcon="@drawable/ic_arrow_back" />
+    <TextView android:id="@+id/download_empty" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:gravity="center" android:padding="28dp" android:text="还没有下载任务\n从作品详情点下载，这里会显示实时进度。"
+        android:textColor="@color/xa_muted" android:textSize="14sp" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/download_list"
+        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+        android:clipToPadding="false" android:padding="14dp" />
+</LinearLayout>

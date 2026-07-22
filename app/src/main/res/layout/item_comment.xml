@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_glass_card"
+    android:orientation="horizontal"
+    android:padding="14dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/comment_avatar"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:contentDescription="评论者头像"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher_round"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TextView android:id="@+id/comment_user" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:textColor="@color/xa_text"
+            android:textSize="13sp" android:textStyle="bold" />
+        <TextView android:id="@+id/comment_text" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="5dp"
+            android:textColor="@color/xa_text" android:textSize="14sp" />
+        <ImageView android:id="@+id/comment_stamp" android:layout_width="96dp"
+            android:layout_height="96dp" android:layout_marginTop="6dp"
+            android:contentDescription="评论贴图" android:scaleType="fitCenter" android:visibility="gone" />
+        <TextView android:id="@+id/comment_stamp_error"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="7dp" android:background="@drawable/bg_soft_pill"
+            android:clickable="true" android:focusable="true" android:paddingHorizontal="11dp"
+            android:paddingVertical="8dp" android:text="贴图加载失败 · 点击重试"
+            android:textColor="@color/pink_500" android:textSize="12sp"
+            android:visibility="gone" />
+        <TextView android:id="@+id/comment_meta" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="7dp"
+            android:textColor="@color/xa_muted" android:textSize="11sp" />
+    </LinearLayout>
+</LinearLayout>

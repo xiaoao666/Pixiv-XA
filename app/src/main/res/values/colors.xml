@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ink_950">#0C1020</color>
+    <color name="ink_900">#13182B</color>
+    <color name="ink_800">#222A43</color>
+    <color name="paper_50">#F7F8FC</color>
+    <color name="paper_100">#EFF1F8</color>
+    <color name="paper_200">#DDE2F0</color>
+    <color name="ink_text">#13182B</color>
+    <color name="ink_muted">#68708B</color>
+    <color name="pink_500">#FF6FAE</color>
+    <color name="pink_300">#FFB3D1</color>
+    <color name="cyan_400">#68E2F0</color>
+    <color name="violet_400">#9386FF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="xa_background">#F7F8FC</color>
+    <color name="xa_surface">#F2FFFFFF</color>
+    <color name="xa_surface_soft">#DDE7EAF4</color>
+    <color name="xa_text">#13182B</color>
+    <color name="xa_muted">#68708B</color>
+    <color name="xa_outline">#D7DBE8</color>
+    <color name="xa_nav">#F8FFFFFF</color>
+</resources>

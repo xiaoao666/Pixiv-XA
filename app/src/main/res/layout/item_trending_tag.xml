@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:layout_margin="5dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/xa_surface"
+    app:cardCornerRadius="22dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/xa_outline"
+    app:strokeWidth="1dp">
+
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        <ImageView android:id="@+id/tag_cover" android:layout_width="match_parent"
+            android:layout_height="match_parent" android:contentDescription="热门标签封面"
+            android:scaleType="centerCrop" />
+        <View android:layout_width="match_parent" android:layout_height="match_parent"
+            android:background="@drawable/bg_tag_scrim" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_gravity="bottom" android:orientation="vertical" android:padding="15dp">
+            <TextView android:id="@+id/tag_name" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:maxLines="2" android:textColor="@android:color/white"
+                android:textSize="18sp" android:textStyle="bold" />
+            <TextView android:id="@+id/tag_translation" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="3dp" android:maxLines="1"
+                android:textColor="#DDE8F0FF" android:textSize="11sp" />
+        </LinearLayout>
+    </FrameLayout>
+</com.google.android.material.card.MaterialCardView>

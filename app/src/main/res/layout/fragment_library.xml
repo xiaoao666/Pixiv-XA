@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="32dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="我的画室"
+            android:textColor="@color/xa_text"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="LIBRARY / ACCOUNT / SETTINGS"
+            android:textColor="@color/xa_muted"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/xa_surface"
+            app:cardCornerRadius="26dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/xa_outline"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/profile_avatar"
+                        android:layout_width="76dp"
+                        android:layout_height="76dp"
+                        android:contentDescription="头像"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/demo_art_05"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/profile_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="旅人 · Demo"
+                            android:textColor="@color/xa_text"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/profile_caption"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="登录后同步 Pixiv 收藏、关注与历史"
+                            android:textColor="@color/xa_muted"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/stat_bookmarks"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="0\n收藏"
+                        android:textColor="@color/xa_text"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/stat_works"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="--\n创作"
+                        android:textColor="@color/xa_text"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/stat_history"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="0\n浏览记录"
+                        android:textColor="@color/xa_text"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/login_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/bg_gradient_button"
+                    android:text="连接 Pixiv 账号"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="常用工具"
+            android:textColor="@color/xa_text"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="@color/xa_surface"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/xa_outline"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="6dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bookmarks_button"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:gravity="start|center_vertical"
+                    android:text="收藏夹与稍后看"
+                    android:textAllCaps="false"
+                    android:textColor="@color/xa_text" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/downloads_button"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:gravity="start|center_vertical"
+                    android:text="下载队列与本地画廊"
+                    android:textAllCaps="false"
+                    android:textColor="@color/xa_text" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/following_button"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="match_parent" android:layout_height="54dp"
+                    android:gravity="start|center_vertical" android:text="关注画师的新作"
+                    android:textAllCaps="false" android:textColor="@color/xa_text" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/history_button"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="match_parent" android:layout_height="54dp"
+                    android:gravity="start|center_vertical" android:text="浏览记录"
+                    android:textAllCaps="false" android:textColor="@color/xa_text" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/r18_button"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="match_parent" android:layout_height="54dp"
+                    android:gravity="start|center_vertical" android:text="R18 排行榜"
+                    android:textAllCaps="false" android:textColor="@color/xa_text" />
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/r18_switch"
+                    android:layout_width="match_parent" android:layout_height="56dp"
+                    android:paddingHorizontal="16dp" android:text="显示 R18 内容入口"
+                    android:textColor="@color/xa_text" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/theme_button"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:gravity="start|center_vertical"
+                    android:text="切换昼夜主题"
+                    android:textAllCaps="false"
+                    android:textColor="@color/xa_text" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/network_button" style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="match_parent" android:layout_height="54dp" android:gravity="start|center_vertical"
+                    android:text="网络模式：安全 DNS" android:textAllCaps="false" android:textColor="@color/xa_text" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/image_host_button" style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="match_parent" android:layout_height="54dp" android:gravity="start|center_vertical"
+                    android:text="图片加速源：自动" android:textAllCaps="false" android:textColor="@color/xa_text" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/bg_glass_card"
+            android:padding="16dp"
+            android:text="XA 不代理作品内容。图片、漫画与小说版权归各创作者及 Pixiv 所有。"
+            android:textColor="@color/xa_muted"
+            android:textSize="12sp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

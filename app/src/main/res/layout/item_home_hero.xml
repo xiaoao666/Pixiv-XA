@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="14dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="252dp"
+        app:cardCornerRadius="26dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/xa_outline"
+        app:strokeWidth="1dp">
+
+        <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/hero_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" />
+            <View android:layout_width="match_parent" android:layout_height="match_parent"
+                android:background="@drawable/bg_hero_scrim" android:clickable="false" />
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_gravity="bottom" android:orientation="vertical" android:padding="20dp">
+                <TextView
+                    android:id="@+id/mode_badge" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:background="@drawable/bg_image_badge" android:paddingHorizontal="10dp" android:paddingVertical="5dp"
+                    android:text="PIXIV · PERSONAL FEED" android:textColor="@android:color/white"
+                    android:textSize="10sp" android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/hero_title" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" android:ellipsize="end" android:fontFamily="sans-serif-black"
+                    android:maxLines="1" android:text="今日星图" android:textColor="@android:color/white" android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/hero_indicator" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp" android:text="● ○ ○" android:textColor="#E8FFFFFF" android:textSize="13sp" />
+            </LinearLayout>
+        </FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="18dp" android:gravity="center_vertical" android:orientation="horizontal">
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black" android:text="今日灵感" android:textColor="@color/xa_text" android:textSize="22sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="TODAY'S CONSTELLATION" android:textColor="@color/xa_muted" android:textSize="10sp" android:textStyle="bold" />
+        </LinearLayout>
+        <TextView android:id="@+id/daily_next" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:background="@drawable/bg_soft_pill" android:clickable="true" android:focusable="true"
+            android:paddingHorizontal="12dp" android:paddingVertical="7dp" android:text="每日推荐  ›"
+            android:textColor="@color/pink_500" android:textSize="12sp" android:textStyle="bold" />
+    </LinearLayout>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/home_filters" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="12dp" app:singleSelection="true">
+        <com.google.android.material.chip.Chip android:id="@+id/filter_all" style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="推荐" />
+        <com.google.android.material.chip.Chip android:id="@+id/filter_illust" style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="插画" />
+        <com.google.android.material.chip.Chip android:id="@+id/filter_manga" style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="漫画" />
+        <com.google.android.material.chip.Chip android:id="@+id/filter_novel" style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="小说" />
+    </com.google.android.material.chip.ChipGroup>
+</LinearLayout>

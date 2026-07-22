@@ -1,0 +1,14 @@
+<resources>
+    <style name="Theme.PixivXA" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/paper_50</item>
+        <item name="android:navigationBarColor">@color/paper_50</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="colorPrimary">@color/pink_500</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/violet_400</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/xa_background" android:orientation="vertical">
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/author_toolbar" android:layout_width="match_parent" android:layout_height="72dp" android:background="@drawable/bg_page_header"
+        app:navigationIcon="@drawable/ic_arrow_back" app:title="画师主页" app:subtitle="PROFILE / WORKS"
+        app:titleTextColor="@color/xa_text" app:subtitleTextColor="@color/xa_muted" app:navigationIconTint="@color/xa_text" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="18dp">
+        <com.google.android.material.imageview.ShapeableImageView android:id="@+id/author_avatar" android:layout_width="76dp" android:layout_height="76dp" android:scaleType="centerCrop" app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="14dp" android:layout_weight="1" android:orientation="vertical">
+            <TextView android:id="@+id/author_name" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/xa_text" android:textSize="21sp" android:textStyle="bold" />
+            <TextView android:id="@+id/author_info" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:textColor="@color/xa_muted" android:textSize="12sp" />
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton android:id="@+id/author_follow" android:layout_width="wrap_content" android:layout_height="48dp" android:text="关注" android:textAllCaps="false" />
+    </LinearLayout>
+    <TextView android:id="@+id/author_comment" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingHorizontal="18dp" android:paddingBottom="14dp" android:textColor="@color/xa_muted" android:textSize="13sp" />
+    <TextView android:id="@+id/author_empty" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:gravity="center" android:padding="18dp" android:text="暂时没有公开插画"
+        android:textColor="@color/xa_muted" android:visibility="gone" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/author_list" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:clipToPadding="false" android:paddingHorizontal="10dp" android:paddingBottom="24dp" />
+</LinearLayout>

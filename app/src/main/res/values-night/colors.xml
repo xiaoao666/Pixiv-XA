@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="xa_background">#0C1020</color>
+    <color name="xa_surface">#E6161D30</color>
+    <color name="xa_surface_soft">#CC222A43</color>
+    <color name="xa_text">#F7F8FC</color>
+    <color name="xa_muted">#A8B0C8</color>
+    <color name="xa_outline">#35405B</color>
+    <color name="xa_nav">#F2141929</color>
+</resources>
