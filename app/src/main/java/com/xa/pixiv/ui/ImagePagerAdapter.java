@@ -23,7 +23,7 @@ public final class ImagePagerAdapter extends RecyclerView.Adapter<ImagePagerAdap
 
     public ImagePagerAdapter(ArtWork work, Listener listener) {
         this.work = work;
-        this.pages = work.getPageUrls();
+        this.pages = work.getPagePreviewUrls();
         this.listener = listener;
     }
 

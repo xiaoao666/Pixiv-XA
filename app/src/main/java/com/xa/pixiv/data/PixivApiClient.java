@@ -344,25 +344,31 @@ public final class PixivApiClient {
         String preview = firstNonEmpty(urls, "large", "medium", "square_medium");
         String original = "";
         List<String> pageUrls = new ArrayList<>();
-        JSONObject single = json.optJSONObject("meta_single_page");
-        if (single != null) {
-            original = single.optString("original_image_url", "");
-            if (!original.isEmpty()) pageUrls.add(original);
-        }
-        if (original.isEmpty()) {
-            JSONArray pages = json.optJSONArray("meta_pages");
-            if (pages != null) for (int i = 0; i < pages.length(); i++) {
+        List<String> pagePreviewUrls = new ArrayList<>();
+        JSONArray pages = json.optJSONArray("meta_pages");
+        if (pages != null && pages.length() > 0) {
+            for (int i = 0; i < pages.length(); i++) {
                 JSONObject page = pages.optJSONObject(i);
                 JSONObject pageImageUrls = page == null ? null : page.optJSONObject("image_urls");
                 String pageUrl = firstNonEmpty(pageImageUrls, "original", "large", "medium");
+                String pagePreview = firstNonEmpty(pageImageUrls, "large", "medium", "square_medium");
                 if (!pageUrl.isEmpty()) pageUrls.add(pageUrl);
+                if (!pagePreview.isEmpty()) pagePreviewUrls.add(pagePreview);
             }
             if (!pageUrls.isEmpty()) original = pageUrls.get(0);
+        } else {
+            JSONObject single = json.optJSONObject("meta_single_page");
+            if (single != null) {
+                original = single.optString("original_image_url", "");
+                if (!original.isEmpty()) pageUrls.add(original);
+            }
+            if (!preview.isEmpty()) pagePreviewUrls.add(preview);
         }
         if (original.isEmpty()) {
             original = preview;
             if (!preview.isEmpty()) pageUrls.add(preview);
         }
+        if (pagePreviewUrls.isEmpty() && !preview.isEmpty()) pagePreviewUrls.add(preview);
         JSONObject user = json.optJSONObject("user");
         String author = user == null ? "Pixiv Creator" : user.optString("name", "Pixiv Creator");
         List<String> tags = new ArrayList<>();
@@ -390,7 +396,8 @@ public final class PixivApiClient {
                 json.optInt("x_restrict", 0),
                 user == null ? 0L : user.optLong("id"),
                 user == null ? "" : firstNonEmpty(user.optJSONObject("profile_image_urls"), "medium", "square_medium"),
-                pageUrls
+                pageUrls,
+                pagePreviewUrls
         );
     }
 

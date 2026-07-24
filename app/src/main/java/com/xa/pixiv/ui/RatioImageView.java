@@ -11,7 +11,7 @@ import androidx.appcompat.widget.AppCompatImageView;
  */
 public final class RatioImageView extends AppCompatImageView {
     private static final float MIN_RATIO = 0.55f;
-    private static final float MAX_RATIO = 1.9f;
+    private static final float MAX_RATIO = 2.35f;
 
     private float ratio = 1.25f;
 

@@ -187,12 +187,12 @@ public final class ArtAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             bookmark.setAlpha(work.isBookmarked() ? 1f : .72f);
 
             if (work.isLocal()) {
-                Glide.with(image).load(work.getImageRes()).centerCrop().into(image);
+                Glide.with(image).load(work.getImageRes()).fitCenter().into(image);
             } else {
                 GlideUrl url = PixivImages.glide(itemView.getContext(), work.getPreviewUrl());
                 Glide.with(image).load(url)
                         .placeholder(new ColorDrawable(ContextCompat.getColor(itemView.getContext(), R.color.xa_surface_soft)))
-                        .centerCrop().into(image);
+                        .fitCenter().into(image);
             }
             itemView.setOnClickListener(v -> listener.onOpen(work, image));
             bookmark.setOnClickListener(v -> listener.onBookmark(work, adapterPosition));

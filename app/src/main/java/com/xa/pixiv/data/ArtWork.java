@@ -22,6 +22,7 @@ public final class ArtWork implements Serializable {
     private final long authorId;
     private final String authorAvatar;
     private final List<String> pageUrls;
+    private final List<String> pagePreviewUrls;
     private boolean bookmarked;
 
     public ArtWork(long id, String title, String author, String type, String previewUrl,
@@ -51,6 +52,17 @@ public final class ArtWork implements Serializable {
                    String originalUrl, int imageRes, int width, int height, int pageCount,
                    int bookmarkCount, List<String> tags, boolean bookmarked, int xRestrict,
                    long authorId, String authorAvatar, List<String> pageUrls) {
+        this(id, title, author, type, previewUrl, originalUrl, imageRes, width, height,
+                pageCount, bookmarkCount, tags, bookmarked, xRestrict, authorId,
+                authorAvatar, pageUrls, previewUrl == null || previewUrl.isEmpty()
+                        ? Collections.emptyList() : Collections.singletonList(previewUrl));
+    }
+
+    public ArtWork(long id, String title, String author, String type, String previewUrl,
+                   String originalUrl, int imageRes, int width, int height, int pageCount,
+                   int bookmarkCount, List<String> tags, boolean bookmarked, int xRestrict,
+                   long authorId, String authorAvatar, List<String> pageUrls,
+                   List<String> pagePreviewUrls) {
         this.id = id;
         this.title = title == null ? "Untitled" : title;
         this.author = author == null ? "Unknown" : author;
@@ -73,6 +85,12 @@ public final class ArtWork implements Serializable {
         }
         if (pages.isEmpty() && !this.originalUrl.isEmpty()) pages.add(this.originalUrl);
         this.pageUrls = Collections.unmodifiableList(pages);
+        List<String> previews = new ArrayList<>();
+        if (pagePreviewUrls != null) for (String url : pagePreviewUrls) {
+            if (url != null && !url.isEmpty()) previews.add(url);
+        }
+        if (previews.isEmpty() && !this.previewUrl.isEmpty()) previews.add(this.previewUrl);
+        this.pagePreviewUrls = Collections.unmodifiableList(previews);
     }
 
     public long getId() { return id; }
@@ -97,6 +115,19 @@ public final class ArtWork implements Serializable {
                     ? Collections.emptyList() : Collections.singletonList(originalUrl);
         }
         return pageUrls;
+    }
+    public List<String> getPagePreviewUrls() {
+        List<String> originals = getPageUrls();
+        if (pagePreviewUrls == null || pagePreviewUrls.isEmpty()) {
+            if (previewUrl == null || previewUrl.isEmpty()) return originals;
+            return Collections.nCopies(Math.max(1, originals.size()), previewUrl);
+        }
+        if (pagePreviewUrls.size() >= originals.size()) return pagePreviewUrls;
+        List<String> aligned = new ArrayList<>(Math.max(1, originals.size()));
+        for (int i = 0; i < Math.max(1, originals.size()); i++) {
+            aligned.add(i < pagePreviewUrls.size() ? pagePreviewUrls.get(i) : pagePreviewUrls.get(0));
+        }
+        return Collections.unmodifiableList(aligned);
     }
     public void setBookmarked(boolean bookmarked) { this.bookmarked = bookmarked; }
     public boolean isLocal() { return imageRes != 0; }

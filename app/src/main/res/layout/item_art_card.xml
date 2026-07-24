@@ -27,7 +27,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="作品封面"
-                android:scaleType="centerCrop" />
+                android:background="@color/xa_surface_soft"
+                android:scaleType="fitCenter" />
 
             <TextView
                 android:id="@+id/page_badge"

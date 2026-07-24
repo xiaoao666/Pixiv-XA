@@ -162,7 +162,7 @@ public final class DetailActivity extends AppCompatActivity {
             image.setVisibility(View.VISIBLE);
             image.setTransitionName("art_image_" + artwork.getId());
             if (artwork.isLocal()) Glide.with(this).load(artwork.getImageRes()).fitCenter().into(image);
-            else Glide.with(this).load(PixivImages.glide(this, artwork.getOriginalUrl())).fitCenter().into(image);
+            else Glide.with(this).load(PixivImages.glide(this, artwork.getPreviewUrl())).fitCenter().into(image);
             image.setOnClickListener(v -> openFullImage(0));
         }
     }
